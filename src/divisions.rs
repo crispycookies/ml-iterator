@@ -19,7 +19,7 @@ impl Divisions for u8 {
 
 impl Divisions for u16 {
     fn run_division(scale: f64, args: Vec<String>, base: Self, name: String) {
-        let offset: Vec<Self> = vec![1, 2, 7, 15, 31, 63, 163];
+        let offset: Vec<Self> = vec![1, 2, 7, 15, 31, 63, 163, 255, 2047, 8191, 16384, 32768];
         for i in offset {
             let upper = base + 2 * i;
             let zero = base + i;
@@ -32,7 +32,7 @@ impl Divisions for u16 {
 
 impl Divisions for u32 {
     fn run_division(scale: f64, args: Vec<String>, base: Self, name: String) {
-        let offset: Vec<Self> = vec![1, 2, 7, 15, 31, 63, 163];
+        let offset: Vec<Self> = vec![1, 2, 7, 15, 31, 63, 163, 255, 2047, 8191, 16384, 32768, 2147483647];
         for i in offset {
             let upper = base + 2 * i;
             let zero = base + i;
@@ -45,7 +45,7 @@ impl Divisions for u32 {
 
 impl Divisions for u64 {
     fn run_division(scale: f64, args: Vec<String>, base: Self, name: String) {
-        let offset: Vec<Self> = vec![1, 2, 7, 15, 31, 63, 163];
+        let offset: Vec<Self> = vec![1, 2, 7, 15, 31, 63, 163, 255, 2047, 8191, 16384, 32768, 2147483647];
         for i in offset {
             let upper = base + 2 * i;
             let zero = base + i;
