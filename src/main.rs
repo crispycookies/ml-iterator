@@ -27,9 +27,6 @@ pub fn separate<T>(s: T) -> String
 fn start<T>(program: String, file: String, def_weight: T, offset: T, lower: T, upper: T, zero: T, scale: f64, size: usize, t_size: usize, epochs: usize, eta: T, d_type: String)
     where T: std::fmt::Display + Clone
 {
-    let s = program.clone();
-    let d = file.clone();
-
     // https://doc.rust-lang.org/std/process/struct.Command.html
     // Accessed 02.04.2021(dd.mm.yyyy) @ 00:01
     let output = {
@@ -96,11 +93,13 @@ fn run<T>(args: Vec<String>, lower: T, offset: T, upper: T, zero: T, r_zero: T, 
 
 
 fn run_epochs<T>(args: Vec<String>, lower: T, base: T, upper: T, zero: T, r_zero: T, scale: f64, name: String)
-    where T: std::fmt::Display + Clone + eta::ETA
+    where T: std::fmt::Display + Clone + eta::ETA + std::ops::Sub<Output = T>
 {
     let epoch_max = args.get(0).unwrap().parse::<usize>().unwrap();
     for i in 0..epoch_max {
-        eta::ETA::eta(args.clone(), lower.clone(), base.clone(), upper.clone(), zero.clone(), r_zero.clone(), scale.clone(), i, name.clone())
+        let mut offset  = upper.clone();
+        offset = offset - lower.clone();
+        eta::ETA::eta(args.clone(), lower.clone(), offset, upper.clone(), zero.clone(), r_zero.clone(), scale.clone(), i, name.clone())
     }
 }
 
@@ -145,7 +144,5 @@ fn main() {
     let mut args: Vec<String> = std::env::args().collect();
     args.remove(0);
 
-    //start("C:/Users/TobiasEgger/CLionProjects/basic_perceptron/target/debug/basic_perceptron.exe".to_string(), "data/z.csv".to_string(),0.,2., -1.,1.,0.,1.,4,50,12,0.1, "f64".to_string());
-    //start(args.get(0).unwrap().clone(), args.get(1).unwrap().clone(), 0., 2., -1., 1., 0., 1., 4, 50, 12, 0.1, "f64".to_string());
     run_types(args);
 }
