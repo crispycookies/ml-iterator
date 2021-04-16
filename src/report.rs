@@ -48,7 +48,7 @@ impl Report {
     fn make_string(&self, data: Vec<String>) -> String {
         let mut s = data.get(0).unwrap().clone();
         for i in 1..data.len() {
-            s = s + ", " + &*data.get(i).unwrap().clone();
+            s = s + "," + &*data.get(i).unwrap().clone();
         }
         s = s + "\n";
         return s;
