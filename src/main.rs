@@ -14,11 +14,11 @@ pub(crate) mod unchecked_ops;
 
 #[derive(PartialEq, EnumIter)]
 enum Types {
-    U8T,
-    U16T,
-    U32T,
-    U64T,
-    U128T,
+    I8T,
+    I16T,
+    I32T,
+    I64T,
+    I128T,
     F32T,
     F64T,
 }
@@ -132,20 +132,20 @@ fn run_types(args: Vec<String>) {
 
     for i in Types::iter() {
         match i {
-            Types::U8T => {
-                run_scale::<u8>(&mut writer, args.clone(), "u8".to_string(), 0);
+            Types::I8T => {
+                run_scale::<i8>(&mut writer, args.clone(), "i8".to_string(), 0);
             }
-            Types::U16T => {
-                run_scale::<u16>(&mut writer, args.clone(), "u16".to_string(), 0);
+            Types::I16T => {
+                run_scale::<i16>(&mut writer, args.clone(), "i16".to_string(), 0);
             }
-            Types::U32T => {
-                run_scale::<u32>(&mut writer, args.clone(), "u32".to_string(), 0);
+            Types::I32T => {
+                run_scale::<i32>(&mut writer, args.clone(), "i32".to_string(), 0);
             }
-            Types::U64T => {
-                run_scale::<u64>(&mut writer, args.clone(), "u64".to_string(), 0);
+            Types::I64T => {
+                run_scale::<i64>(&mut writer, args.clone(), "i64".to_string(), 0);
             }
-            Types::U128T => {
-                run_scale::<u128>(&mut writer, args.clone(), "u128".to_string(), 0);
+            Types::I128T => {
+                run_scale::<i128>(&mut writer, args.clone(), "i128".to_string(), 0);
             }
             Types::F32T => {
                 run_scale::<f32>(&mut writer, args.clone(), "f32".to_string(), -1.);

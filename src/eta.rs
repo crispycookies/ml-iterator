@@ -5,7 +5,7 @@ pub(crate) trait ETA {
     fn eta(writer: &mut Report, args: Vec<String>, lower: Self, offset: Self, upper: Self, zero: Self, r_zero: Self, scale: f64, epochs: usize, name: String);
 }
 
-impl ETA for u8 {
+impl ETA for i8 {
     fn eta(writer: &mut Report, args: Vec<String>, lower: Self, offset: Self, upper: Self, zero: Self, r_zero: Self, scale: f64, epochs: usize, name: String) {
         let eta: Vec<Self> = vec![1, 2, 4, 8, 16, 32, 64];
         for i in eta {
@@ -14,7 +14,7 @@ impl ETA for u8 {
     }
 }
 
-impl ETA for u16 {
+impl ETA for i16 {
     fn eta(writer: &mut Report, args: Vec<String>, lower: Self, offset: Self, upper: Self, zero: Self, r_zero: Self, scale: f64, epochs: usize, name: String) {
         let eta: Vec<Self> = vec![1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024];
         for i in eta {
@@ -23,7 +23,7 @@ impl ETA for u16 {
     }
 }
 
-impl ETA for u32 {
+impl ETA for i32 {
     fn eta(writer: &mut Report, args: Vec<String>, lower: Self, offset: Self, upper: Self, zero: Self, r_zero: Self, scale: f64, epochs: usize, name: String) {
         let eta: Vec<Self> = vec![1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024];
         for i in eta {
@@ -32,7 +32,7 @@ impl ETA for u32 {
     }
 }
 
-impl ETA for u64 {
+impl ETA for i64 {
     fn eta(writer: &mut Report, args: Vec<String>, lower: Self, offset: Self, upper: Self, zero: Self, r_zero: Self, scale: f64, epochs: usize, name: String) {
         let eta: Vec<Self> = vec![1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024];
         for i in eta {
@@ -41,7 +41,7 @@ impl ETA for u64 {
     }
 }
 
-impl ETA for u128 {
+impl ETA for i128 {
     fn eta(writer: &mut Report, args: Vec<String>, lower: Self, offset: Self, upper: Self, zero: Self, r_zero: Self, scale: f64, epochs: usize, name: String) {
         let eta: Vec<Self> = vec![1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024];
         for i in eta {
